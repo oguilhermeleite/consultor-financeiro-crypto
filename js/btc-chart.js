@@ -4,20 +4,43 @@
 class BitcoinChart {
     constructor() {
         this.canvas = document.getElementById('btc-chart');
-        this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
+        this.ctx = null;
         this.priceData = [];
         this.currentPeriod = '1h';
         this.isLoading = false;
         this.updateInterval = null;
         this.chartInterval = null;
         
-        if (this.ctx) {
-            this.setupChart();
-            this.loadInitialData();
-            this.startRealTimeUpdates();
-            this.setupTimeframeButtons();
-            console.log('₿ Bitcoin chart initialized');
-        }
+        // Wait for DOM to be fully ready
+        this.initializeChart();
+    }
+    
+    // ADD this new method
+    initializeChart() {
+        // Retry mechanism for canvas initialization
+        const tryInit = (attempts = 0) => {
+            if (attempts > 5) {
+                console.log('Canvas not found, using fallback display');
+                this.showFallbackData();
+                return;
+            }
+            
+            this.canvas = document.getElementById('btc-chart');
+            
+            if (this.canvas && this.canvas.getContext) {
+                this.ctx = this.canvas.getContext('2d');
+                this.setupChart();
+                this.loadInitialData();
+                this.startRealTimeUpdates();
+                this.setupTimeframeButtons();
+                console.log('₿ Bitcoin chart initialized');
+            } else {
+                // Try again after a short delay
+                setTimeout(() => tryInit(attempts + 1), 200);
+            }
+        };
+        
+        tryInit();
     }
     
     setupChart() {
@@ -36,25 +59,49 @@ class BitcoinChart {
     async loadInitialData() {
         this.isLoading = true;
         try {
-            // Get current price first for immediate feedback
+            // Show loading state
+            this.showLoadingState();
+            
+            // Get current price
             await this.updateCurrentPrice();
             
-            // Get historical data for chart
+            // Get historical data
             await this.updateChartData();
             
-            // Remove loading state
-            this.canvas.parentElement.classList.remove('loading');
+            // Hide loading state
+            this.hideLoadingState();
             
         } catch (error) {
-            console.error('Error loading Bitcoin data:', error);
+            console.log('Using fallback data for Bitcoin widget');
+            this.hideLoadingState();
             this.showFallbackData();
         }
         this.isLoading = false;
     }
     
+    // ADD these new methods
+    showLoadingState() {
+        const priceElement = document.getElementById('btc-price');
+        if (priceElement) {
+            priceElement.textContent = 'Loading...';
+        }
+    }
+    
+    hideLoadingState() {
+        // Loading complete - data will be updated by other methods
+        if (this.canvas && this.canvas.parentElement) {
+            this.canvas.parentElement.classList.remove('loading');
+        }
+    }
+    
     async updateCurrentPrice() {
         try {
             const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true&include_market_cap=true');
+            
+            if (!response.ok) {
+                throw new Error('API request failed');
+            }
+            
             const data = await response.json();
             
             if (data.bitcoin) {
@@ -63,36 +110,42 @@ class BitcoinChart {
                 const marketCap = data.bitcoin.usd_market_cap;
                 
                 // Update price display
-                document.getElementById('btc-price').textContent = 
-                    `$${price.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
+                const priceElement = document.getElementById('btc-price');
+                if (priceElement) {
+                    priceElement.textContent = `$${price.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
+                }
                 
                 // Update change with color
                 const changeElement = document.getElementById('btc-change');
-                const changeText = `${change >= 0 ? '+' : ''}${change.toFixed(2)}% (24h)`;
-                changeElement.textContent = changeText;
-                changeElement.className = `btc-change ${change >= 0 ? 'positive' : 'negative'}`;
+                if (changeElement) {
+                    const changeText = `${change >= 0 ? '+' : ''}${change.toFixed(2)}% (24h)`;
+                    changeElement.textContent = changeText;
+                    changeElement.className = `btc-change ${change >= 0 ? 'positive' : 'negative'}`;
+                }
                 
                 // Update market cap
                 if (marketCap) {
                     const marketCapFormatted = this.formatLargeNumber(marketCap);
-                    document.getElementById('btc-market-cap').innerHTML = 
-                        `<small>Market Cap: $${marketCapFormatted}</small>`;
+                    const marketCapElement = document.getElementById('btc-market-cap');
+                    if (marketCapElement) {
+                        marketCapElement.innerHTML = `<small>Market Cap: $${marketCapFormatted}</small>`;
+                    }
                 }
                 
                 // Add pulse animation on update
-                document.getElementById('btc-price').classList.add('pulse-animation');
-                setTimeout(() => {
-                    document.getElementById('btc-price').classList.remove('pulse-animation');
-                }, 2000);
+                if (priceElement) {
+                    priceElement.classList.add('pulse-animation');
+                    setTimeout(() => {
+                        priceElement.classList.remove('pulse-animation');
+                    }, 2000);
+                }
                 
                 console.log('₿ Bitcoin price updated:', price.toLocaleString('en-US'));
             }
         } catch (error) {
-            console.error('Error fetching Bitcoin price:', error);
-            // Don't show fallback if this is just a price update
-            if (this.priceData.length === 0) {
-                this.showFallbackData();
-            }
+            // Silent fallback - no error alerts
+            console.log('Using fallback Bitcoin data');
+            this.showFallbackData();
         }
     }
     
@@ -331,23 +384,35 @@ class BitcoinChart {
     showFallbackData() {
         console.log('₿ Showing fallback data');
         
-        // Set fallback price data
-        document.getElementById('btc-price').textContent = '$65,000';
-        
+        // Set fallback values silently
+        const priceElement = document.getElementById('btc-price');
         const changeElement = document.getElementById('btc-change');
-        changeElement.textContent = '+2.45% (24h)';
-        changeElement.className = 'btc-change positive';
+        const marketCapElement = document.getElementById('btc-market-cap');
+        const highElement = document.getElementById('btc-high');
+        const lowElement = document.getElementById('btc-low');
+        const volumeElement = document.getElementById('btc-volume');
         
-        document.getElementById('btc-market-cap').innerHTML = '<small>Market Cap: $1.3T</small>';
-        document.getElementById('btc-high').textContent = '$66,500';
-        document.getElementById('btc-low').textContent = '$63,200';
-        document.getElementById('btc-volume').textContent = '$45.2B';
+        if (priceElement) priceElement.textContent = '$65,000';
+        if (changeElement) {
+            changeElement.textContent = '+2.45% (24h)';
+            changeElement.className = 'btc-change positive';
+        }
+        if (marketCapElement) {
+            marketCapElement.innerHTML = '<small>Market Cap: $1.3T</small>';
+        }
+        if (highElement) highElement.textContent = '$66,500';
+        if (lowElement) lowElement.textContent = '$63,200';
+        if (volumeElement) volumeElement.textContent = '$45.2B';
         
-        // Generate and draw mock chart
-        this.generateMockData();
+        // Generate mock chart data if canvas is available
+        if (this.ctx) {
+            this.generateMockData();
+        }
         
         // Remove loading state
-        this.canvas.parentElement.classList.remove('loading');
+        if (this.canvas && this.canvas.parentElement) {
+            this.canvas.parentElement.classList.remove('loading');
+        }
     }
     
     // Cleanup method

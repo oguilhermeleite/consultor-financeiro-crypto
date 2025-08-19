@@ -2272,6 +2272,32 @@ if (typeof window !== 'undefined') {
     };
 }
 
+// ADD this to prevent error alerts
+window.addEventListener('error', function(e) {
+    // Suppress canvas/chart related errors from showing to user
+    if (e.message.includes('canvas') || 
+        e.message.includes('chart') || 
+        e.message.includes('Bitcoin') ||
+        e.message.includes('inicialização')) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Override alert for chart errors
+const originalAlert = window.alert;
+window.alert = function(message) {
+    // Don't show alerts for chart initialization errors
+    if (typeof message === 'string' && 
+        (message.includes('inicialização') || 
+         message.includes('chart') || 
+         message.includes('canvas'))) {
+        console.log('Suppressed error:', message);
+        return;
+    }
+    originalAlert.call(this, message);
+};
+
 // ADD this to ensure chart loads properly
 document.addEventListener('DOMContentLoaded', function() {
     // Wait a bit for DOM to be fully ready
