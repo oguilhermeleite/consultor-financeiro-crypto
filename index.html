@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor Financeiro - Crypto Trading Specialist</title>
+    <meta name="description" content="Descubra seu perfil de investidor em cripto e receba sua carteira personalizada">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/engagement.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Landing Page -->
+    <section id="landing" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="crypto-icons">
+                    <span class="crypto-icon floating">₿</span>
+                    <span class="crypto-icon floating">Ξ</span>
+                    <span class="crypto-icon floating">◎</span>
+                </div>
+                
+                <h1 class="hero-title">Consultor Financeiro</h1>
+                <p class="hero-subtitle">Descubra seu perfil de investidor em cripto e receba sua carteira personalizada</p>
+                
+                <!-- Bitcoin Real-Time Chart Widget -->
+                <div class="bitcoin-widget">
+                    <div class="btc-header">
+                        <div class="btc-info">
+                            <div class="btc-symbol">
+                                <span class="btc-icon">₿</span>
+                                <span class="btc-name">Bitcoin</span>
+                            </div>
+                            <div class="btc-price" id="btc-price">$65,000</div>
+                            <div class="btc-change" id="btc-change">+2.45% (24h)</div>
+                        </div>
+                        <div class="btc-market-cap" id="btc-market-cap">
+                            <small>Market Cap: $1.3T</small>
+                        </div>
+                    </div>
+                    
+                    <div class="btc-chart-container">
+                        <canvas id="btc-chart" width="400" height="120"></canvas>
+                    </div>
+                    
+                    <div class="btc-stats">
+                        <div class="stat">
+                            <span class="label">24h Alto</span>
+                            <span class="value" id="btc-high">$66,500</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">24h Baixo</span>
+                            <span class="value" id="btc-low">$63,200</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Volume</span>
+                            <span class="value" id="btc-volume">$45.2B</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-timeframe">
+                        <button class="timeframe-btn active" data-period="1h">1H</button>
+                        <button class="timeframe-btn" data-period="24h">24H</button>
+                        <button class="timeframe-btn" data-period="7d">7D</button>
+                    </div>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="trust-indicators">
+                    <div class="trust-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="users-count">12.847</span>
+                            <span class="stat-label">Carteiras criadas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Gratuito</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">⚡</span>
+                            <span class="stat-label">Resultado instantâneo</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-badges">
+                        <div class="badge-item">
+                            <span class="badge-icon">🔒</span>
+                            <span class="badge-text">Dados seguros</span>
+                        </div>
+                        <div class="badge-item">
+                            <span class="badge-icon">📊</span>
+                            <span class="badge-text">Análise baseada em IA</span>
+                        </div>
+                        <div class="badge-item">
+                            <span class="badge-icon">🎯</span>
+                            <span class="badge-text">Recomendações personalizadas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎯</div>
+                        <h3>Carteira 100% Cripto</h3>
+                        <p>Portfolio exclusivo em criptomoedas</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Resultado Imediato</h3>
+                        <p>Análise completa em segundos</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📈</div>
+                        <h3>Dicas de Trading Personalizadas</h3>
+                        <p>Estratégias baseadas no seu perfil</p>
+                    </div>
+                </div>
+                
+                <!-- Social Proof -->
+                <div class="social-proof">
+                    <div class="testimonials-preview">
+                        <div class="testimonial-item active">
+                            <div class="testimonial-content">
+                                <span class="quote">"Descobri que sou perfil arrojado e já consegui 40% de retorno seguindo as dicas!"</span>
+                                <div class="author">
+                                    <span class="name">João M.</span>
+                                    <span class="profile">Trader Avançado</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <span class="quote">"Finalmente entendi qual carteira combina comigo. Muito preciso!"</span>
+                                <div class="author">
+                                    <span class="name">Maria S.</span>
+                                    <span class="profile">Investidora Iniciante</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <span class="quote">"A análise mudou minha estratégia. Recomendo para todos!"</span>
+                                <div class="author">
+                                    <span class="name">Carlos R.</span>
+                                    <span class="profile">Trader Profissional</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-dots">
+                        <span class="dot active" onclick="showTestimonial(0)"></span>
+                        <span class="dot" onclick="showTestimonial(1)"></span>
+                        <span class="dot" onclick="showTestimonial(2)"></span>
+                    </div>
+                </div>
+                
+                <!-- Live Activity -->
+                <div class="live-activity">
+                    <div class="activity-header">
+                        <span class="activity-indicator">🟢</span>
+                        <span class="activity-text">Atividade em tempo real</span>
+                    </div>
+                    <div class="activity-feed" id="activity-feed">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                </div>
+                
+                <button onclick="startAnalysis()" class="cta-button">
+                    🚀 Começar Análise
+                </button>
+                
+                <div class="hero-footer">
+                    <small>✅ Gratuito • ✅ Sem cadastro • ✅ Resultado instantâneo</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Form Questionnaire -->
+    <section id="questionnaire-section" class="questionnaire-section hidden">
+        <div class="questionnaire-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text" id="progress-text">Passo 1 de 2</div>
+            
+            <div class="form-card">
+                <h2>Vamos começar! 👋</h2>
+                <p>Conte um pouco sobre você e seus objetivos</p>
+                
+                <form id="unified-form" class="unified-form">
+                    <!-- Nome -->
+                    <div class="form-group">
+                        <label for="nome">Como prefere ser chamado? (opcional)</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu primeiro nome" autocomplete="given-name">
+                    </div>
+                    
+                    <!-- Objetivo -->
+                    <div class="form-group">
+                        <label for="objetivo">🎯 Qual seu objetivo de investimento? <span class="required">*</span></label>
+                        <div class="select-wrapper">
+                            <select id="objetivo" name="objetivo" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="curtissimo">Curtíssimo prazo – 1 a 7 dias</option>
+                                <option value="moderado">Moderado – 4 a 9 semanas</option>
+                                <option value="longo">Longo prazo – 1 ano ou mais</option>
+                            </select>
+                            <div class="select-arrow">▼</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tolerância a risco -->
+                    <div class="form-group">
+                        <label>⚖️ Qual sua tolerância a risco? <span class="required">*</span></label>
+                        <div class="risk-options">
+                            <label class="risk-option">
+                                <input type="radio" name="tolerancia" value="baixo" required>
+                                <div class="risk-card">
+                                    <span class="risk-icon">🛡️</span>
+                                    <strong>Baixo - Prefiro segurança</strong>
+                                    <small>Priorizo preservar capital mesmo com menores retornos</small>
+                                </div>
+                            </label>
+                            
+                            <label class="risk-option">
+                                <input type="radio" name="tolerancia" value="medio" required>
+                                <div class="risk-card">
+                                    <span class="risk-icon">⚖️</span>
+                                    <strong>Médio - Aceito algum risco</strong>
+                                    <small>Equilíbrio entre segurança e oportunidades de crescimento</small>
+                                </div>
+                            </label>
+                            
+                            <label class="risk-option">
+                                <input type="radio" name="tolerancia" value="alto" required>
+                                <div class="risk-card">
+                                    <span class="risk-icon">🚀</span>
+                                    <strong>Alto - Busco máximo retorno</strong>
+                                    <small>Aceito alta volatilidade para buscar maiores ganhos</small>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Valor -->
+                    <div class="form-group">
+                        <label for="valor">💰 Valor aproximado para investir (opcional)</label>
+                        <div class="select-wrapper">
+                            <select id="valor" name="valor">
+                                <option value="">Selecione uma opção</option>
+                                <option value="baixo">Até R$ 1.000</option>
+                                <option value="medio-baixo">R$ 1.000 - R$ 10.000</option>
+                                <option value="medio-alto">R$ 10.000 - R$ 50.000</option>
+                                <option value="alto">Mais de R$ 50.000</option>
+                            </select>
+                            <div class="select-arrow">▼</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experiência -->
+                    <div class="form-group">
+                        <label for="experiencia">📊 Experiência com cripto (opcional)</label>
+                        <div class="select-wrapper">
+                            <select id="experiencia" name="experiencia">
+                                <option value="">Selecione uma opção</option>
+                                <option value="iniciante">Iniciante - Menos de 6 meses</option>
+                                <option value="intermediario">Intermediário - 6 meses a 2 anos</option>
+                                <option value="avancado">Avançado - Mais de 2 anos</option>
+                            </select>
+                            <div class="select-arrow">▼</div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        Continuar →
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Section (Step 5) -->
+    <section id="review-section" class="review-container hidden">
+        <div class="questionnaire-container">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+            <div class="progress-text">Passo 2 de 2</div>
+            
+            <div class="form-card">
+                <div class="step-title">
+                    <h2>Revisão final 📋</h2>
+                    <p>Confirme suas respostas e receba sua carteira personalizada</p>
+                </div>
+
+                <div class="review-data" id="review-data">
+                    <div class="review-item">
+                        <span class="review-label">👤 Nome:</span>
+                        <span class="review-value" data-field="nome">-</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">🎯 Objetivo:</span>
+                        <span class="review-value" data-field="objetivo">-</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">⚖️ Tolerância:</span>
+                        <span class="review-value" data-field="tolerancia">-</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">💰 Valor:</span>
+                        <span class="review-value" data-field="valor">-</span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">📊 Experiência:</span>
+                        <span class="review-value" data-field="experiencia">-</span>
+                    </div>
+                </div>
+
+                <div class="alerts-container" id="alerts-container">
+                    <!-- Dynamic alerts will be shown here -->
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" id="back-to-form" class="action-button secondary">
+                        ← Voltar
+                    </button>
+                    <button type="button" id="submit-analysis" class="action-button primary">
+                        <span class="submit-text">🔍 Descobrir Meu Perfil</span>
+                        <span class="loading-text hidden">⏳ Calculando...</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="results-section hidden">
+        <div class="results-container">
+            <div class="results-header">
+                <h1>🎉 Sua análise está pronta!</h1>
+                <p>Confira seu perfil de investidor e carteira personalizada</p>
+            </div>
+
+            <div class="results-grid">
+                <!-- Card 1: Profile -->
+                <div class="result-card profile-card">
+                    <h2>🎯 Perfil Identificado</h2>
+                    <div class="profile-badge" id="profile-badge">
+                        <div class="profile-emoji" id="profile-emoji">⚖️</div>
+                        <div class="profile-info">
+                            <div class="profile-name" id="profile-name">Moderado</div>
+                            <div class="profile-label" id="profile-label">TRADER DE MÉDIO PRAZO</div>
+                        </div>
+                    </div>
+                    <p class="profile-description" id="profile-description">
+                        Você equilibra segurança com oportunidades de crescimento, focando em criptomoedas consolidadas.
+                    </p>
+                    
+                    <!-- Risk Score -->
+                    <div class="risk-score">
+                        <div class="risk-label">Nível de risco:</div>
+                        <div class="risk-visual" id="risk-visual">●●●●○</div>
+                        <div class="risk-number" id="risk-number">(6/10)</div>
+                    </div>
+                    
+                    <!-- Expected Returns -->
+                    <div class="expected-returns">
+                        <strong>Retorno esperado:</strong> <span id="expected-returns">15-30% ao ano</span>
+                    </div>
+                    
+                    <div class="alert-container" id="alert-container"></div>
+                </div>
+
+                <!-- Card 2: Portfolio -->
+                <div class="result-card portfolio-card">
+                    <h2>💼 Sua Carteira Recomendada</h2>
+                    <div class="portfolio-value" id="portfolio-value"></div>
+                    
+                    <!-- Portfolio Chart -->
+                    <div class="portfolio-chart-container">
+                        <canvas id="portfolioChart" width="300" height="300"></canvas>
+                    </div>
+                    
+                    <div class="allocation-container" id="allocation-container">
+                        <!-- Dynamic allocation bars will be inserted here -->
+                    </div>
+                    <div class="portfolio-explanation">
+                        <small>💡 Passe o mouse sobre cada ativo para entender o motivo da escolha</small>
+                    </div>
+                </div>
+
+                <!-- Card 3: Summary -->
+                <div class="result-card summary-card">
+                    <h2>📋 Resumo das Suas Respostas</h2>
+                    <div class="summary-grid" id="summary-grid">
+                        <!-- Dynamic summary will be inserted here -->
+                    </div>
+                    <div class="consistency-badge" id="consistency-badge">
+                        <span class="badge-icon">✅</span>
+                        <span class="badge-text">Perfil consistente</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Tips -->
+                <div class="result-card tips-card">
+                    <h2>💡 Dicas Personalizadas</h2>
+                    <ul class="tips-list" id="tips-list">
+                        <!-- Dynamic tips will be inserted here -->
+                    </ul>
+                </div>
+
+                <!-- Card 5: Next Steps -->
+                <div class="result-card next-steps-card">
+                    <h2>🚀 Recursos Avançados</h2>
+                    <div class="engagement-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🔔</div>
+                            <div class="feature-info">
+                                <div class="feature-title">Alertas de Preço</div>
+                                <div class="feature-description">Notificações inteligentes para seus investimentos</div>
+                            </div>
+                            <div class="feature-status available">✅ Disponível</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📚</div>
+                            <div class="feature-info">
+                                <div class="feature-title">Histórico de Análises</div>
+                                <div class="feature-description">Acompanhe a evolução do seu perfil</div>
+                            </div>
+                            <div class="feature-status available">✅ Disponível</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎬</div>
+                            <div class="feature-info">
+                                <div class="feature-title">Comparação de Cenários</div>
+                                <div class="feature-description">Compare diferentes estratégias de investimento</div>
+                            </div>
+                            <div class="feature-status available">✅ Disponível</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions-container">
+                <button id="share-whatsapp" class="action-button primary">
+                    📱 Compartilhar no WhatsApp
+                </button>
+                <button id="save-device" class="action-button secondary">
+                    💾 Salvar no Dispositivo
+                </button>
+                <button id="adjust-portfolio" class="action-button tertiary">
+                    ⚙️ Ajustar Carteira
+                </button>
+                <button id="restart-analysis" class="action-button tertiary">
+                    🔄 Refazer Análise
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tooltips -->
+    <div id="tooltip" class="tooltip-container hidden">
+        <div class="tooltip-content" id="tooltip-content"></div>
+        <div class="tooltip-arrow"></div>
+    </div>
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Crypto Consultor Advanced Features -->
+    <script src="js/api.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/ab-testing.js"></script>
+    
+    <!-- Engagement System Features -->
+    <script src="js/alerts.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/scenarios.js"></script>
+    <script src="js/newsletter.js"></script>
+    <script src="js/engagement-ui.js"></script>
+    
+    <!-- Main Application -->
+    <script src="main.js"></script>
+    
+    <!-- Enhanced Initialization -->
+    <script>
+    // Enhanced Application Initialization with Advanced Features
+    document.addEventListener('DOMContentLoaded', async function() {
+      console.log('🚀 Starting Crypto Consultor with advanced features...');
+      
+      try {
+        // Initialize core systems
+        window.cryptoFeatures = {
+          priceAPI: null,
+          portfolioCalculator: null,
+          notificationManager: null,
+          analytics: null,
+          abTesting: null,
+          alertSystem: null,
+          userHistoryManager: null,
+          scenarioComparator: null,
+          newsletterManager: null,
+          engagementUI: null,
+          isInitialized: false
+        };
+        
+        // 1. Register Service Worker
+        if ('serviceWorker' in navigator) {
+          try {
+            const registration = await navigator.serviceWorker.register('/sw.js');
+            console.log('✅ Service Worker registered:', registration);
+            
+            // Handle updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  if (confirm('Nova versão disponível. Atualizar agora?')) {
+                    window.location.reload();
+                  }
+                }
+              });
+            });
+          } catch (error) {
+            console.warn('⚠️ Service Worker registration failed:', error);
+          }
+        }
+        
+        // 2. Initialize Analytics (first to track everything)
+        if (typeof AnalyticsManager !== 'undefined') {
+          window.cryptoFeatures.analytics = new AnalyticsManager();
+          console.log('📊 Analytics Manager initialized');
+        }
+        
+        // 3. Initialize A/B Testing with Analytics
+        if (typeof ABTesting !== 'undefined' && window.cryptoFeatures.analytics) {
+          window.cryptoFeatures.abTesting = new ABTesting(window.cryptoFeatures.analytics);
+          console.log('🧪 A/B Testing initialized');
+        }
+        
+        // 4. Initialize Crypto Price API
+        if (typeof CryptoPriceAPI !== 'undefined') {
+          window.cryptoFeatures.priceAPI = new CryptoPriceAPI();
+          console.log('💰 Crypto Price API initialized');
+        }
+        
+        // 5. Initialize Portfolio Calculator
+        if (typeof PortfolioCalculator !== 'undefined') {
+          window.cryptoFeatures.portfolioCalculator = new PortfolioCalculator();
+          console.log('📊 Portfolio Calculator initialized');
+        }
+        
+        // 6. Initialize Notification Manager
+        if (typeof NotificationManager !== 'undefined') {
+          window.cryptoFeatures.notificationManager = new NotificationManager();
+          await window.cryptoFeatures.notificationManager.initialize();
+          console.log('🔔 Notification Manager initialized');
+        }
+        
+        // 7. Initialize Engagement Systems
+        // Note: These systems auto-initialize via their own DOMContentLoaded listeners
+        // but we store references once they're available
+        setTimeout(() => {
+          if (window.alertSystem) {
+            window.cryptoFeatures.alertSystem = window.alertSystem;
+            console.log('🚨 Alert System referenced');
+          }
+          
+          if (window.userHistoryManager) {
+            window.cryptoFeatures.userHistoryManager = window.userHistoryManager;
+            console.log('📚 History Manager referenced');
+          }
+          
+          if (window.scenarioComparator) {
+            window.cryptoFeatures.scenarioComparator = window.scenarioComparator;
+            console.log('🎬 Scenario Comparator referenced');
+          }
+          
+          if (window.newsletterManager) {
+            window.cryptoFeatures.newsletterManager = window.newsletterManager;
+            console.log('📧 Newsletter Manager referenced');
+          }
+          
+          if (window.engagementUI) {
+            window.cryptoFeatures.engagementUI = window.engagementUI;
+            console.log('🎨 Engagement UI referenced');
+          }
+        }, 1000);
+        
+        // 8. Apply A/B Test Variants to UI
+        if (window.cryptoFeatures.abTesting) {
+          applyUIVariants();
+        }
+        
+        // 9. Handle URL parameters for deep linking
+        handleURLParameters();
+        
+        // 10. Setup PWA install prompt
+        setupPWAInstall();
+        
+        // 11. Setup real-time price monitoring for results page
+        setupPriceMonitoring();
+        
+        // Mark as initialized
+        window.cryptoFeatures.isInitialized = true;
+        
+        // Track successful initialization
+        if (window.cryptoFeatures.analytics) {
+          // Count engagement features after timeout
+          setTimeout(() => {
+            window.cryptoFeatures.analytics.trackEvent('app_initialized', {
+              features: Object.keys(window.cryptoFeatures).filter(key => 
+                window.cryptoFeatures[key] !== null && key !== 'isInitialized'
+              ),
+              engagementFeatures: {
+                alerts: !!window.cryptoFeatures.alertSystem,
+                history: !!window.cryptoFeatures.userHistoryManager,
+                scenarios: !!window.cryptoFeatures.scenarioComparator,
+                newsletter: !!window.cryptoFeatures.newsletterManager,
+                ui: !!window.cryptoFeatures.engagementUI
+              },
+              initTime: Date.now()
+            });
+          }, 1500);
+        }
+        
+        console.log('✅ All advanced features initialized successfully');
+        
+      } catch (error) {
+        console.error('❌ Error initializing advanced features:', error);
+        
+        // Track initialization error
+        if (window.cryptoFeatures?.analytics) {
+          window.cryptoFeatures.analytics.trackError('initialization_error', {
+            error: error.message,
+            stack: error.stack
+          });
+        }
+        
+        // Show user-friendly error
+        showInitializationError();
+      }
+    });
+    
+    // Apply A/B test variants to UI elements
+    function applyUIVariants() {
+      if (!window.cryptoFeatures.abTesting) return;
+      
+      // CTA Button variant
+      const ctaVariant = window.cryptoFeatures.abTesting.getUIVariant('cta_button');
+      const ctaButton = document.getElementById('start-questionnaire');
+      if (ctaButton && ctaVariant !== 'default') {
+        const buttonTexts = {
+          'Descobrir Perfil': 'Descobrir Meu Perfil 🚀',
+          'Calcular Carteira': 'Calcular Minha Carteira 💰',
+          'Começar Análise': 'Começar Análise 📊'
+        };
+        
+        if (buttonTexts[ctaVariant]) {
+          ctaButton.textContent = buttonTexts[ctaVariant];
+        }
+      }
+      
+      // Track UI variant application
+      if (window.cryptoFeatures.analytics) {
+        window.cryptoFeatures.analytics.trackEvent('ui_variant_applied', {
+          ctaButton: ctaVariant
+        });
+      }
+    }
+    
+    // Handle URL parameters for features like alerts
+    function handleURLParameters() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const action = urlParams.get('action');
+      
+      if (action === 'alerts' && window.cryptoFeatures.notificationManager) {
+        // Show alerts interface
+        showAlertsInterface();
+      } else if (action === 'new') {
+        // Force new analysis
+        if (window.cryptoAdvisor) {
+          window.cryptoAdvisor.restartAnalysis();
+        }
+      }
+      
+      // Track URL parameter usage
+      if (action && window.cryptoFeatures.analytics) {
+        window.cryptoFeatures.analytics.trackEvent('url_action', { action });
+      }
+    }
+    
+    // Setup PWA installation prompt
+    function setupPWAInstall() {
+      let deferredPrompt;
+      
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        showInstallPrompt();
+      });
+      
+      function showInstallPrompt() {
+        // Only show if not already installed
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+          return;
+        }
+        
+        const installButton = document.createElement('button');
+        installButton.textContent = '📱 Instalar App';
+        installButton.className = 'install-button';
+        installButton.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 25px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+          z-index: 1000;
+          transition: all 0.3s ease;
+        `;
+        
+        installButton.onclick = async () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            if (window.cryptoFeatures.analytics) {
+              window.cryptoFeatures.analytics.trackEvent('pwa_install_prompt', { outcome });
+            }
+            
+            deferredPrompt = null;
+            installButton.remove();
+          }
+        };
+        
+        document.body.appendChild(installButton);
+        
+        // Auto-hide after 10 seconds
+        setTimeout(() => {
+          if (installButton.parentNode) {
+            installButton.remove();
+          }
+        }, 10000);
+      }
+      
+      // Track PWA usage
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        if (window.cryptoFeatures.analytics) {
+          window.cryptoFeatures.analytics.trackEvent('pwa_standalone_mode');
+        }
+      }
+    }
+    
+    // Setup real-time price monitoring for results
+    function setupPriceMonitoring() {
+      if (!window.cryptoFeatures.portfolioCalculator) return;
+      
+      // Monitor prices when on results page
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const resultsSection = document.getElementById('results');
+            if (resultsSection && !resultsSection.classList.contains('hidden')) {
+              startPortfolioMonitoring();
+            } else {
+              stopPortfolioMonitoring();
+            }
+          }
+        });
+      });
+      
+      const resultsSection = document.getElementById('results');
+      if (resultsSection) {
+        observer.observe(resultsSection, { attributes: true });
+      }
+    }
+    
+    // Start portfolio monitoring
+    function startPortfolioMonitoring() {
+      if (!window.cryptoAdvisor?.userProfile?.allocation) return;
+      
+      const allocation = window.cryptoAdvisor.userProfile.allocation;
+      const amount = window.cryptoAdvisor.formData.amount || 10000;
+      
+      // Start auto-update every 2 minutes
+      window.cryptoFeatures.portfolioCalculator.startAutoUpdate(
+        allocation,
+        amount,
+        updatePortfolioDisplay,
+        120000 // 2 minutes
+      );
+      
+      console.log('📊 Portfolio monitoring started');
+    }
+    
+    // Stop portfolio monitoring
+    function stopPortfolioMonitoring() {
+      if (window.cryptoFeatures.portfolioCalculator) {
+        window.cryptoFeatures.portfolioCalculator.stopAutoUpdate();
+        console.log('⏹️ Portfolio monitoring stopped');
+      }
+    }
+    
+    // Update portfolio display with live data
+    function updatePortfolioDisplay(portfolioData) {
+      if (!portfolioData || !portfolioData.portfolioData) return;
+      
+      // Update allocation items with live prices
+      Object.keys(portfolioData.portfolioData).forEach(crypto => {
+        const data = portfolioData.portfolioData[crypto];
+        const element = document.querySelector(`[data-crypto="${crypto}"]`);
+        
+        if (element) {
+          // Update price display if available
+          const priceElement = element.querySelector('.crypto-price');
+          if (priceElement && data.price.brl) {
+            const formatted = window.cryptoFeatures.priceAPI.formatPrice(data.price.brl);
+            priceElement.textContent = formatted;
+          }
+          
+          // Update change indicator
+          const changeElement = element.querySelector('.crypto-change');
+          if (changeElement && data.change24h !== undefined) {
+            const change = window.cryptoFeatures.priceAPI.formatChange(data.change24h);
+            changeElement.textContent = change.text;
+            changeElement.className = `crypto-change ${change.color}`;
+          }
+        }
+      });
+      
+      // Track portfolio update
+      if (window.cryptoFeatures.analytics) {
+        window.cryptoFeatures.analytics.trackEvent('portfolio_updated', {
+          totalValue: portfolioData.summary.totalValue,
+          change24h: portfolioData.summary.totalChangePercent24h
+        });
+      }
+    }
+    
+    // Show alerts interface
+    function showAlertsInterface() {
+      // Create alerts modal or section
+      console.log('🔔 Showing alerts interface');
+      // Implementation would go here
+    }
+    
+    // Show initialization error
+    function showInitializationError() {
+      const errorDiv = document.createElement('div');
+      errorDiv.style.cssText = `
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: #ff4757;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        z-index: 9999;
+        max-width: 300px;
+      `;
+      errorDiv.innerHTML = `
+        <strong>⚠️ Erro de Inicialização</strong><br>
+        Algumas funcionalidades podem não estar disponíveis.
+        <button onclick="this.parentNode.remove()" style="background:none;border:none;color:white;float:right;cursor:pointer;">✕</button>
+      `;
+      
+      document.body.appendChild(errorDiv);
+      
+      // Auto-remove after 5 seconds
+      setTimeout(() => {
+        if (errorDiv.parentNode) {
+          errorDiv.remove();
+        }
+      }, 5000);
+    }
+    
+    // Enhanced error handling
+    window.addEventListener('error', (event) => {
+      if (window.cryptoFeatures?.analytics) {
+        window.cryptoFeatures.analytics.trackError('global_error', {
+          message: event.message,
+          filename: event.filename,
+          lineno: event.lineno,
+          colno: event.colno,
+          stack: event.error?.stack
+        });
+      }
+    });
+    
+    // Performance monitoring
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (window.cryptoFeatures?.analytics && 'performance' in window) {
+          const timing = performance.timing;
+          const loadTime = timing.loadEventEnd - timing.navigationStart;
+          
+          window.cryptoFeatures.analytics.trackTiming('page_load', loadTime, {
+            domReady: timing.domContentLoadedEventEnd - timing.navigationStart,
+            resourcesLoaded: timing.loadEventEnd - timing.domContentLoadedEventEnd
+          });
+        }
+      }, 1000);
+    });
+    </script>
+    
+    <!-- Bitcoin Real-Time Chart -->
+    <script src="js/btc-chart.js"></script>
+</body>
+</html>

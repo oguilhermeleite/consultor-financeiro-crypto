@@ -1,0 +1,3104 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Enhanced Crypto-themed Color Palette */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #00d4aa 0%, #00a085 100%);
+    --warning-gradient: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    --crypto-gradient: linear-gradient(135deg, #667eea 0%, #00d4aa 50%, #f7931a 100%);
+    
+    /* Crypto Colors */
+    --bitcoin-color: #f7931a;
+    --ethereum-color: #627eea;
+    --binance-color: #f3ba2f;
+    --solana-color: #9945ff;
+    --xrp-color: #23292f;
+    --pendle-color: #ff6b9d;
+    --spx6900-color: #8b5cf6;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-bg-strong: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --glass-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.18);
+    
+    /* Backgrounds */
+    --bg-primary: #0f0f23;
+    --bg-secondary: #1a1a2e;
+    --bg-card: #16213e;
+    --bg-dark: #0a0a1a;
+    
+    /* Text */
+    --text-primary: #ffffff;
+    --text-secondary: #a8b2d1;
+    --text-muted: #8892b0;
+    --text-accent: #00d4aa;
+    
+    /* Borders & Radius */
+    --border-radius: 16px;
+    --border-radius-lg: 24px;
+    --border-radius-xl: 32px;
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.25);
+    --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.35);
+    
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Crypto Icons */
+    --btc-icon: '₿';
+    --eth-icon: 'Ξ';
+    --sol-icon: '◎';
+    --bnb-icon: '⬢';
+    --xrp-icon: '✕';
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 212, 170, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(247, 147, 26, 0.1) 0%, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Base Class */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+}
+
+.glass:hover {
+    background: var(--glass-bg-strong);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Card Glassmorphism */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.glass-card:hover {
+    background: var(--glass-bg-strong);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Landing Page */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.crypto-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.crypto-icon.floating {
+    font-size: 3rem;
+    opacity: 0.8;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: float 6s ease-in-out infinite;
+}
+
+.crypto-icon.floating:nth-child(1) { animation-delay: 0s; }
+.crypto-icon.floating:nth-child(2) { animation-delay: -2s; }
+.crypto-icon.floating:nth-child(3) { animation-delay: -4s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(2deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.benefit-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transition: var(--transition);
+    transform-origin: left;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.benefit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.benefit-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.benefit-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.cta-button {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: none;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.hero-footer {
+    margin-top: 2rem;
+    opacity: 0.8;
+}
+
+.hero-footer small {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Multi-Step Questionnaire */
+.questionnaire-section {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.questionnaire-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+/* Step Header */
+.step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.back-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(-3px);
+}
+
+.step-indicator {
+    flex: 1;
+    text-align: center;
+}
+
+.step-indicator span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.step-progress {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.step-progress-fill {
+    height: 100%;
+    background: var(--success-gradient);
+    border-radius: 10px;
+    width: 20%;
+    transition: width 0.5s ease;
+}
+
+.step-spacer {
+    width: 120px; /* Same width as back button to center the indicator */
+}
+
+/* Form Steps */
+.questionnaire-form {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    min-height: 500px;
+}
+
+.form-step {
+    display: none;
+    animation: slideInRight 0.4s ease forwards;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-step.sliding-out {
+    animation: slideOutLeft 0.3s ease forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+}
+
+.step-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.step-title h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.step-title p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Enhanced Select Styling */
+.select-wrapper {
+    position: relative;
+    display: block;
+}
+
+.select-wrapper select {
+    width: 100%;
+    padding: 1rem;
+    padding-right: 3rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-wrapper select:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.select-wrapper select:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: var(--transition);
+    font-size: 0.8rem;
+}
+
+.select-wrapper:hover .select-arrow {
+    color: var(--text-primary);
+}
+
+.select-wrapper select:focus + .select-arrow {
+    color: #667eea;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.select-wrapper select option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 0.5rem;
+}
+
+/* Input Styling */
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+/* Enhanced Radio Groups */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radio-group.large .radio-option {
+    padding: 1.5rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.radio-option:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio-custom {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    transition: var(--transition);
+    margin-top: 2px;
+}
+
+.radio-custom::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: var(--transition);
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-option:has(input:checked) {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.15);
+}
+
+.radio-content {
+    flex: 1;
+}
+
+.radio-title {
+    color: var(--text-secondary);
+    transition: var(--transition);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.radio-description {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-content .radio-title {
+    color: var(--text-primary);
+}
+
+/* Tooltips */
+.tooltip {
+    cursor: help;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+    font-size: 0.75rem;
+    transition: var(--transition);
+}
+
+.tooltip:hover {
+    background: rgba(102, 126, 234, 0.3);
+    transform: scale(1.1);
+}
+
+.tooltip-container {
+    position: absolute;
+    z-index: 1000;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    max-width: 250px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--bg-card);
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Review Container */
+.review-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.review-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: right;
+}
+
+/* Alerts Container */
+.alerts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.alert.alert-warning,
+.alert.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.alert.alert-info,
+.alert.info {
+    background: rgba(79, 172, 254, 0.1);
+    border-color: #4facfe;
+    color: #4facfe;
+}
+
+.alert.alert-success {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: #4caf50;
+    color: #81c784;
+}
+
+.alert.alert-caution {
+    background: rgba(255, 87, 34, 0.1);
+    border-color: #ff5722;
+    color: #ff8a65;
+}
+
+.alert-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.alert-text {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Navigation Buttons */
+.form-navigation {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.continue-button,
+.submit-button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 180px;
+    justify-content: center;
+}
+
+.continue-button {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.continue-button:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.submit-button {
+    background: var(--success-gradient);
+    color: white;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Results Section */
+.results-section {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    padding: 2rem 0;
+}
+
+.results-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.results-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.results-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.result-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    animation: slideInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.result-card:nth-child(1) { animation-delay: 0.1s; }
+.result-card:nth-child(2) { animation-delay: 0.2s; }
+.result-card:nth-child(3) { animation-delay: 0.3s; }
+.result-card:nth-child(4) { animation-delay: 0.4s; }
+.result-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-card:hover {
+    background: var(--glass-bg-strong);
+    transform: translateY(-8px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.result-card h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* Enhanced Profile Card */
+.profile-card {
+    position: relative;
+}
+
+.profile-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--crypto-gradient);
+    border-radius: var(--border-radius-lg);
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.profile-card:hover::after {
+    opacity: 0.3;
+}
+
+.profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.profile-badge:hover {
+    background: var(--glass-bg-strong);
+    transform: scale(1.02);
+}
+
+.profile-emoji {
+    font-size: 3.5rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--crypto-gradient);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    animation: profileGlow 3s ease-in-out infinite;
+}
+
+@keyframes profileGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(0, 212, 170, 0.5), 0 0 40px rgba(102, 126, 234, 0.3); }
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.profile-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Risk Score */
+.risk-score {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+}
+
+.risk-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.risk-visual {
+    color: #667eea;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.risk-number {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Expected Returns */
+.expected-returns {
+    padding: 1rem;
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: var(--border-radius);
+    border-left: 4px solid #4facfe;
+    margin-bottom: 1rem;
+}
+
+.expected-returns strong {
+    color: var(--text-primary);
+}
+
+.expected-returns span {
+    color: #4facfe;
+    font-weight: 600;
+}
+
+/* Portfolio Card */
+.portfolio-value {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.portfolio-value:hover {
+    background: var(--glass-bg-strong);
+    transform: scale(1.02);
+}
+
+/* Portfolio Chart Container */
+.portfolio-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--glass-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+}
+
+.portfolio-chart-container canvas {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 50%;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.allocation-container {
+    margin-bottom: 1rem;
+}
+
+/* Enhanced Portfolio Allocation */
+.allocation-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.allocation-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--allocation-color, var(--primary-gradient));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.allocation-item:hover {
+    background: var(--glass-bg-strong);
+    transform: translateX(8px);
+    box-shadow: var(--glass-shadow);
+}
+
+.allocation-item:hover::before {
+    opacity: 1;
+}
+
+.crypto-symbol {
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 80px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.crypto-symbol::before {
+    content: var(--crypto-icon, '●');
+    font-size: 1.2rem;
+    color: var(--crypto-color, var(--text-accent));
+}
+
+/* Crypto-specific styling */
+.crypto-symbol[data-crypto="BTC"] {
+    --crypto-icon: '₿';
+    --crypto-color: var(--bitcoin-color);
+}
+
+.crypto-symbol[data-crypto="ETH"] {
+    --crypto-icon: 'Ξ';
+    --crypto-color: var(--ethereum-color);
+}
+
+.crypto-symbol[data-crypto="SOL"] {
+    --crypto-icon: '◎';
+    --crypto-color: var(--solana-color);
+}
+
+.crypto-symbol[data-crypto="BNB"] {
+    --crypto-icon: '⬢';
+    --crypto-color: var(--binance-color);
+}
+
+.crypto-symbol[data-crypto="XRP"] {
+    --crypto-icon: '✕';
+    --crypto-color: var(--xrp-color);
+}
+
+.crypto-symbol[data-crypto="PENDLE"] {
+    --crypto-icon: '🔵';
+    --crypto-color: var(--pendle-color);
+}
+
+.crypto-symbol[data-crypto="SPX6900"] {
+    --crypto-icon: '🚀';
+    --crypto-color: var(--spx6900-color);
+}
+
+.allocation-bar {
+    flex: 1;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.allocation-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 1s ease;
+    position: relative;
+}
+
+.allocation-percentage {
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-width: 50px;
+    text-align: right;
+    color: var(--text-primary);
+}
+
+.portfolio-explanation {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Summary Card */
+.summary-grid {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+}
+
+.summary-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.summary-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: right;
+}
+
+.consistency-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    border-radius: var(--border-radius);
+    color: #28a745;
+}
+
+.badge-icon {
+    font-size: 1.2rem;
+}
+
+.badge-text {
+    font-weight: 600;
+}
+
+/* Tips Card */
+.tips-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tips-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    transition: var(--transition);
+}
+
+.tips-list li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tips-list li::before {
+    content: '💡';
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Next Steps Card */
+.feature-preview {
+    opacity: 0.6;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    border-radius: 28px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.toggle-switch.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.toggle-title {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.toggle-status {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.preview-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Action Buttons */
+.actions-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Enhanced Action Buttons */
+.action-button {
+    padding: 1.25rem 2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 200px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition-fast);
+}
+
+.action-button:hover::before {
+    left: 100%;
+}
+
+.action-button.primary {
+    background: var(--success-gradient);
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 212, 170, 0.3);
+}
+
+.action-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 212, 170, 0.4);
+    background: linear-gradient(135deg, #00e6cc 0%, #00b894 100%);
+}
+
+.action-button.secondary {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+.action-button.secondary:hover {
+    background: var(--glass-bg-strong);
+    transform: translateY(-2px);
+    box-shadow: var(--glass-shadow);
+}
+
+.action-button.tertiary {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-button.tertiary:hover {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    border-color: var(--glass-border);
+    transform: translateY(-2px);
+}
+
+/* Special WhatsApp button styling */
+.action-button[id="share-whatsapp"] {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: white;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+
+.action-button[id="share-whatsapp"]:hover {
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+    background: linear-gradient(135deg, #2be472 0%, #1aa05a 100%);
+}
+
+/* Crypto Colors */
+.crypto-btc { color: var(--bitcoin-color); }
+.crypto-eth { color: var(--ethereum-color); }
+.crypto-bnb { color: var(--binance-color); }
+.crypto-sol { color: var(--solana-color); }
+.crypto-xrp { color: #23292f; }
+.crypto-pendle { color: #ff6b9d; }
+.crypto-spx6900 { color: #8b5cf6; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-container,
+    .questionnaire-container,
+    .results-container {
+        padding: 1rem;
+    }
+    
+    .step-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .step-spacer {
+        display: none;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .questionnaire-form {
+        padding: 1.5rem;
+        min-height: 400px;
+    }
+    
+    .radio-group {
+        gap: 0.75rem;
+    }
+    
+    .radio-option {
+        padding: 1rem;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .result-card {
+        padding: 1.5rem;
+    }
+    
+    .actions-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-button {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .profile-badge {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .allocation-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .crypto-symbol,
+    .allocation-percentage {
+        min-width: auto;
+        text-align: left;
+    }
+    
+    .risk-score {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* Mobile select improvements */
+    .select-wrapper select {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .crypto-icons {
+        gap: 1rem;
+    }
+    
+    .crypto-icon.floating {
+        font-size: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .questionnaire-form {
+        padding: 1.25rem;
+    }
+    
+    .step-title h2 {
+        font-size: 1.5rem;
+    }
+    
+    .result-card {
+        padding: 1.25rem;
+    }
+    
+    .profile-emoji {
+        font-size: 2.5rem;
+        width: 60px;
+        height: 60px;
+    }
+    
+    .profile-name {
+        font-size: 1.25rem;
+    }
+
+    /* Extra mobile select fixes */
+    .select-wrapper select {
+        padding: 0.875rem;
+        padding-right: 2.5rem;
+    }
+    
+    .select-arrow {
+        right: 0.75rem;
+    }
+    
+    .radio-custom {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .radio-custom::after {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* ===== COMPACT LAYOUT IMPROVEMENTS ===== */
+
+/* Compact Results Layout */
+.results-container.compact-layout {
+    max-width: 1400px;
+}
+
+.results-container.compact-layout .results-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Compact Crypto Items */
+.crypto-item.compact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.75rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.crypto-item.compact:hover {
+    background: var(--glass-bg-strong);
+    transform: translateX(4px);
+    box-shadow: var(--glass-shadow);
+}
+
+.crypto-item.compact::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--crypto-color, var(--primary-gradient));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.crypto-item.compact:hover::before {
+    opacity: 1;
+}
+
+/* Crypto Price Information */
+.crypto-price-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.crypto-price-info .crypto-symbol {
+    min-width: 70px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.crypto-price-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.crypto-price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.crypto-change {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.125rem 0.5rem;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    max-width: fit-content;
+}
+
+.crypto-change.positive {
+    color: #00d4aa;
+    background: rgba(0, 212, 170, 0.1);
+}
+
+.crypto-change.negative {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.crypto-change.neutral {
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.crypto-allocation-compact {
+    text-align: right;
+    min-width: 60px;
+}
+
+.crypto-percentage-compact {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.125rem;
+}
+
+.crypto-value-compact {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Enhanced Portfolio Display */
+.portfolio-card.enhanced {
+    position: relative;
+}
+
+.portfolio-card.enhanced::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, 
+        var(--bitcoin-color), 
+        var(--ethereum-color), 
+        var(--solana-color), 
+        var(--binance-color)
+    );
+    border-radius: var(--border-radius-lg);
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.portfolio-card.enhanced:hover::after {
+    opacity: 0.2;
+}
+
+/* Real-time Price Indicators */
+.price-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.price-loading::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--glass-border);
+    border-top: 2px solid var(--text-accent);
+    border-radius: 50%;
+    animation: priceLoading 1s linear infinite;
+}
+
+@keyframes priceLoading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.price-updated {
+    position: relative;
+    animation: priceFlash 0.5s ease-in-out;
+}
+
+@keyframes priceFlash {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(0, 212, 170, 0.2); }
+}
+
+/* Compact Portfolio Chart */
+.portfolio-chart-container.compact {
+    margin: 1.5rem 0;
+    padding: 0.75rem;
+}
+
+.portfolio-chart-container.compact canvas {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+/* Enhanced Allocation Items for Compact View */
+.allocation-item.compact {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+}
+
+.allocation-item.compact .crypto-symbol {
+    min-width: 60px;
+    font-size: 0.9rem;
+}
+
+.allocation-item.compact .allocation-bar {
+    height: 20px;
+    border-radius: 10px;
+}
+
+.allocation-item.compact .allocation-percentage {
+    font-size: 0.85rem;
+    min-width: 45px;
+}
+
+/* Portfolio Value Compact */
+.portfolio-value.compact {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.1) 0%, 
+        rgba(0, 212, 170, 0.1) 100%
+    );
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* Market Status Indicator */
+.market-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.market-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-accent);
+    animation: marketPulse 2s ease-in-out infinite;
+}
+
+@keyframes marketPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive Compact Layout */
+@media (max-width: 768px) {
+    .results-container.compact-layout .results-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    .crypto-item.compact {
+        padding: 0.75rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .crypto-price-info {
+        justify-content: space-between;
+    }
+    
+    .crypto-allocation-compact {
+        text-align: left;
+        min-width: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .portfolio-chart-container.compact canvas {
+        max-width: 200px;
+        max-height: 200px;
+    }
+    
+    .allocation-item.compact {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .allocation-item.compact .crypto-symbol,
+    .allocation-item.compact .allocation-percentage {
+        min-width: auto;
+        text-align: left;
+    }
+    
+    .allocation-bar {
+        order: 3;
+    }
+}
+
+@media (max-width: 480px) {
+    .crypto-item.compact {
+        padding: 0.625rem;
+    }
+    
+    .crypto-price-info .crypto-symbol {
+        min-width: 50px;
+        font-size: 0.8rem;
+    }
+    
+    .crypto-price {
+        font-size: 0.8rem;
+    }
+    
+    .crypto-change {
+        font-size: 0.7rem;
+        padding: 0.1rem 0.4rem;
+    }
+    
+    .crypto-percentage-compact {
+        font-size: 0.8rem;
+    }
+    
+    .crypto-value-compact {
+        font-size: 0.7rem;
+    }
+    
+    .portfolio-value.compact {
+        font-size: 1rem;
+        padding: 0.875rem;
+    }
+    
+    .market-status {
+        font-size: 0.7rem;
+        padding: 0.4rem;
+    }
+}
+
+/* ===== UNIFIED SINGLE FORM LAYOUT ===== */
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--success-gradient);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Form Card */
+.form-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.form-card h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.form-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Unified Form */
+.unified-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.unified-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.unified-form .form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.required {
+    color: #ff6b6b;
+    font-weight: 700;
+}
+
+/* Enhanced Input Styling for Unified Form */
+.unified-form input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.unified-form input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.unified-form input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+/* Risk Options for Unified Form */
+.risk-options {
+    display: grid;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.risk-option {
+    cursor: pointer;
+    display: block;
+}
+
+.risk-option input[type="radio"] {
+    display: none;
+}
+
+.risk-card {
+    padding: 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.risk-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.risk-option input:checked + .risk-card {
+    border-color: #00d4aa;
+    background: rgba(0, 212, 170, 0.15);
+    transform: translateX(4px);
+}
+
+.risk-option input:checked + .risk-card::before {
+    opacity: 1;
+}
+
+.risk-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.risk-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.risk-card strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.risk-card small {
+    color: var(--text-secondary);
+    line-height: 1.4;
+    font-size: 0.875rem;
+}
+
+/* Submit Button for Unified Form */
+.btn-submit {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-submit:hover::before {
+    left: 100%;
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Review Section Styling */
+.review-container .form-card {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.review-data {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.review-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: right;
+    max-width: 60%;
+}
+
+/* Form Navigation */
+.form-navigation {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.form-navigation .action-button {
+    min-width: 150px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+}
+
+/* Step Title for Review */
+.step-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.step-title h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.step-title p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Loading State */
+.loading-text.hidden {
+    display: none;
+}
+
+.btn-submit.loading .submit-text {
+    display: none;
+}
+
+.btn-submit.loading .loading-text {
+    display: inline;
+}
+
+/* Responsive Design for Unified Form */
+@media (max-width: 768px) {
+    .form-card {
+        padding: 1.5rem;
+    }
+    
+    .unified-form {
+        max-width: 100%;
+    }
+    
+    .risk-options {
+        gap: 0.75rem;
+    }
+    
+    .risk-card {
+        padding: 1rem;
+    }
+    
+    .risk-card strong {
+        font-size: 0.9rem;
+    }
+    
+    .risk-card small {
+        font-size: 0.8rem;
+    }
+    
+    .btn-submit {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form-navigation .action-button {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .review-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .review-value {
+        text-align: left;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-card {
+        padding: 1.25rem;
+    }
+    
+    .form-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-card p {
+        font-size: 0.9rem;
+    }
+    
+    .unified-form .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .unified-form input[type="text"],
+    .unified-form select {
+        padding: 0.875rem;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .risk-card {
+        padding: 0.875rem;
+    }
+    
+    .risk-icon {
+        font-size: 1.25rem;
+    }
+    
+    .btn-submit {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+    }
+    
+    .progress-text {
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== TRUST & CREDIBILITY ENHANCEMENTS ===== */
+
+/* Trust indicators */
+.trust-indicators {
+    margin: 2rem 0 3rem;
+    text-align: center;
+}
+
+.trust-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 212, 170, 0.2);
+    padding: 0.75rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 212, 170, 0.3);
+    transition: var(--transition);
+}
+
+.badge-item:hover {
+    background: rgba(0, 212, 170, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.2);
+}
+
+.badge-icon {
+    font-size: 1rem;
+}
+
+.badge-text {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Social proof */
+.social-proof {
+    max-width: 500px;
+    margin: 3rem auto;
+    position: relative;
+}
+
+.testimonials-preview {
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+}
+
+.testimonial-item {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    background: var(--glass-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+.testimonial-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote {
+    display: block;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.quote::before {
+    content: '"';
+    color: var(--text-accent);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.quote::after {
+    content: '"';
+    color: var(--text-accent);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.profile {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    background: rgba(0, 212, 170, 0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 170, 0.2);
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dot:hover {
+    background: rgba(0, 212, 170, 0.7);
+    transform: scale(1.1);
+}
+
+.dot.active {
+    background: var(--text-accent);
+    transform: scale(1.2);
+}
+
+/* Live activity */
+.live-activity {
+    max-width: 400px;
+    margin: 2rem auto;
+    background: var(--glass-bg);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--glass-shadow);
+}
+
+.activity-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.activity-indicator {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.activity-feed {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.activity-item {
+    padding: 0.5rem 0;
+    opacity: 0;
+    animation: slideIn 0.5s ease forwards;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0; 
+        transform: translateX(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+/* Mobile responsive for trust elements */
+@media (max-width: 768px) {
+    .trust-stats {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-item {
+        padding: 0.75rem 1rem;
+        min-width: 150px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .trust-badges {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .badge-item {
+        padding: 0.5rem 0.75rem;
+        justify-content: center;
+        min-width: 200px;
+    }
+    
+    .testimonial-item {
+        padding: 1rem;
+        height: auto;
+    }
+    
+    .testimonials-preview {
+        height: 140px;
+    }
+    
+    .quote {
+        font-size: 0.9rem;
+    }
+    
+    .author {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .live-activity {
+        margin: 1.5rem auto;
+        padding: 0.75rem;
+    }
+    
+    .activity-item {
+        padding: 0.4rem 0;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-indicators {
+        margin: 1.5rem 0 2rem;
+    }
+    
+    .trust-stats {
+        gap: 0.75rem;
+    }
+    
+    .stat-item {
+        padding: 0.6rem 0.8rem;
+        min-width: 130px;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .badge-item {
+        padding: 0.4rem 0.6rem;
+        min-width: 180px;
+    }
+    
+    .badge-text {
+        font-size: 0.8rem;
+    }
+    
+    .social-proof {
+        margin: 2rem auto;
+    }
+    
+    .testimonials-preview {
+        height: 160px;
+    }
+    
+    .testimonial-item {
+        padding: 0.8rem;
+    }
+    
+    .quote {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* ===== BITCOIN REAL-TIME CHART WIDGET ===== */
+
+/* Bitcoin Widget */
+.bitcoin-widget {
+    max-width: 500px;
+    margin: 2rem auto 3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--glass-shadow-hover);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.bitcoin-widget::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.6), transparent);
+}
+
+.bitcoin-widget:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(247, 147, 26, 0.2);
+}
+
+.btc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btc-info {
+    text-align: left;
+}
+
+.btc-symbol {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.btc-icon {
+    font-size: 1.5rem;
+    color: var(--bitcoin-color);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(247, 147, 26, 0.3);
+}
+
+.btc-name {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btc-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btc-change {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.btc-change.positive {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.btc-change.negative {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btc-market-cap {
+    text-align: right;
+    color: var(--text-muted);
+}
+
+.btc-market-cap small {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.btc-chart-container {
+    margin: 1rem 0;
+    height: 120px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#btc-chart {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+.btc-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+.btc-stats .stat {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.btc-stats .stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btc-stats .stat .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btc-stats .stat .value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.chart-timeframe {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.timeframe-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+}
+
+.timeframe-btn.active,
+.timeframe-btn:hover {
+    background: rgba(0, 212, 170, 0.3);
+    border-color: rgba(0, 212, 170, 0.5);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2);
+}
+
+.pulse-animation {
+    animation: btcPulse 2s ease-in-out;
+}
+
+@keyframes btcPulse {
+    0% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.8; 
+        transform: scale(1.02);
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+}
+
+/* Loading state for chart */
+.btc-chart-container.loading::after {
+    content: '📊 Carregando dados...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Bitcoin widget mobile responsive */
+@media (max-width: 768px) {
+    .bitcoin-widget {
+        margin: 1.5rem auto 2rem;
+        padding: 1rem;
+        max-width: 95%;
+    }
+    
+    .btc-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .btc-info {
+        width: 100%;
+    }
+    
+    .btc-market-cap {
+        text-align: left;
+        width: 100%;
+    }
+    
+    .btc-price {
+        font-size: 1.5rem;
+    }
+    
+    .btc-chart-container {
+        height: 100px;
+        margin: 0.75rem 0;
+    }
+    
+    .btc-stats {
+        padding: 0.75rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btc-stats .stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .btc-stats .stat:last-child {
+        border-bottom: none;
+    }
+    
+    .btc-stats .stat::after {
+        display: none;
+    }
+    
+    .btc-stats .stat .label,
+    .btc-stats .stat .value {
+        margin: 0;
+    }
+    
+    .chart-timeframe {
+        gap: 0.25rem;
+        margin-top: 0.75rem;
+    }
+    
+    .timeframe-btn {
+        flex: 1;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bitcoin-widget {
+        padding: 0.875rem;
+        margin: 1rem auto 1.5rem;
+    }
+    
+    .btc-symbol {
+        margin-bottom: 0.375rem;
+    }
+    
+    .btc-icon {
+        font-size: 1.3rem;
+    }
+    
+    .btc-name {
+        font-size: 0.8rem;
+    }
+    
+    .btc-price {
+        font-size: 1.3rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .btc-change {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .btc-chart-container {
+        height: 80px;
+        margin: 0.5rem 0;
+    }
+    
+    .btc-stats {
+        padding: 0.6rem;
+    }
+    
+    .btc-stats .stat {
+        padding: 0.4rem 0;
+    }
+    
+    .btc-stats .stat .label {
+        font-size: 0.7rem;
+    }
+    
+    .btc-stats .stat .value {
+        font-size: 0.8rem;
+    }
+    
+    .timeframe-btn {
+        padding: 0.35rem 0.4rem;
+        font-size: 0.65rem;
+    }
+}
+
+/* Make sure chart container is properly sized and visible */
+.btc-chart-container {
+    margin: 1rem 0;
+    height: 120px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);
+    display: block !important;
+}
+
+#btc-chart {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    background: transparent;
+}
+
+/* Ensure canvas renders properly */
+canvas#btc-chart {
+    border-radius: 12px;
+}
+}

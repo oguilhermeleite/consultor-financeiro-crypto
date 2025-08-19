@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor Financeiro - Perfil de Investidor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .profile-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .profile-btn {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-btn.short-term {
+            background: linear-gradient(45deg, #ff6b6b 0%, #ee5a52 100%);
+        }
+
+        .profile-btn.moderate {
+            background: linear-gradient(45deg, #4ecdc4 0%, #26a69a 100%);
+        }
+
+        .profile-btn.long-term {
+            background: linear-gradient(45deg, #45b7d1 0%, #3498db 100%);
+        }
+
+        .profile-btn.selected {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-description {
+            font-size: 0.9em;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        .result-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .result-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-title {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .result-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .recommendations {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .recommendations h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendations li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+
+        .recommendations li:last-child {
+            border-bottom: none;
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .profile-btn {
+                padding: 20px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💼 Consultor Financeiro</h1>
+        <p class="subtitle">Descubra seu perfil de investidor ideal</p>
+        
+        <div class="profile-buttons">
+            <button class="profile-btn short-term" onclick="selectProfile('short')">
+                <div>📈 Curto Prazo</div>
+                <div class="profile-description">1-7 dias • Ganhos rápidos • Alto risco</div>
+            </button>
+            
+            <button class="profile-btn moderate" onclick="selectProfile('moderate')">
+                <div>⚖️ Moderado</div>
+                <div class="profile-description">3-9 semanas • Equilíbrio • Risco controlado</div>
+            </button>
+            
+            <button class="profile-btn long-term" onclick="selectProfile('long')">
+                <div>🎯 Longo Prazo</div>
+                <div class="profile-description">1+ anos • Crescimento sustentável • Baixo risco</div>
+            </button>
+        </div>
+        
+        <div id="result" class="result-section">
+            <h2 class="result-title" id="resultTitle"></h2>
+            <p class="result-description" id="resultDescription"></p>
+            
+            <div class="recommendations">
+                <h3>💡 Recomendações:</h3>
+                <ul id="recommendationsList"></ul>
+            </div>
+            
+            <button class="reset-btn" onclick="resetSelection()">Nova Consulta</button>
+        </div>
+    </div>
+
+    <script>
+        const profiles = {
+            short: {
+                title: "Perfil: Investidor de Curto Prazo",
+                description: "Você busca ganhos rápidos e está disposto a assumir riscos maiores. Seu foco está em oportunidades de 1 a 7 dias.",
+                recommendations: [
+                    "Day Trading com ações voláteis",
+                    "Operações com criptomoedas",
+                    "Swing Trade em commodities",
+                    "Opções binárias (alto risco)",
+                    "Forex com alavancagem controlada"
+                ]
+            },
+            moderate: {
+                title: "Perfil: Investidor Moderado",
+                description: "Você busca um equilíbrio entre risco e retorno, com investimentos de 3 a 9 semanas. Prefere estabilidade com crescimento.",
+                recommendations: [
+                    "Fundos de investimento diversificados",
+                    "ETFs de setores específicos",
+                    "Ações de empresas consolidadas",
+                    "CDBs com liquidez",
+                    "Títulos do Tesouro Direto"
+                ]
+            },
+            long: {
+                title: "Perfil: Investidor de Longo Prazo",
+                description: "Você prioriza crescimento sustentável e segurança, com horizonte de 1 ano ou mais. Foca na construção de patrimônio.",
+                recommendations: [
+                    "Previdência privada",
+                    "Fundos imobiliários (FIIs)",
+                    "Ações de dividendos",
+                    "Tesouro IPCA+ de longo prazo",
+                    "Investimentos em educação e capacitação"
+                ]
+            }
+        };
+
+        let selectedProfile = null;
+
+        function selectProfile(profileType) {
+            // Remove seleção anterior
+            document.querySelectorAll('.profile-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Adiciona seleção atual
+            event.target.classList.add('selected');
+            selectedProfile = profileType;
+            
+            // Mostra resultado após um pequeno delay
+            setTimeout(() => {
+                showResult(profileType);
+            }, 300);
+        }
+
+        function showResult(profileType) {
+            const profile = profiles[profileType];
+            const resultSection = document.getElementById('result');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultDescription = document.getElementById('resultDescription');
+            const recommendationsList = document.getElementById('recommendationsList');
+            
+            // Atualiza conteúdo
+            resultTitle.textContent = profile.title;
+            resultDescription.textContent = profile.description;
+            
+            // Limpa e adiciona recomendações
+            recommendationsList.innerHTML = '';
+            profile.recommendations.forEach(recommendation => {
+                const li = document.createElement('li');
+                li.textContent = recommendation;
+                recommendationsList.appendChild(li);
+            });
+            
+            // Mostra seção de resultado
+            resultSection.classList.add('show');
+            
+            // Scroll suave para o resultado
+            resultSection.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+
+        function resetSelection() {
+            // Remove todas as seleções
+            document.querySelectorAll('.profile-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Esconde resultado
+            document.getElementById('result').classList.remove('show');
+            
+            selectedProfile = null;
+            
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Adiciona efeitos de hover e animações
+        document.querySelectorAll('.profile-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('selected')) {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                }
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('selected')) {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
