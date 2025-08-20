@@ -612,6 +612,85 @@
         </div>
     </section>
 
+    <!-- Market Dashboard Section (Hidden initially) -->
+    <section id="dashboardSection" class="dashboard-section" style="display: none;">
+        <!-- Market Ticker Bar -->
+        <div class="market-ticker-container">
+            <div class="ticker-label">📊 Mercado Agora</div>
+            <div id="marketTicker" class="market-ticker">
+                <div class="ticker-loading">Carregando dados do mercado...</div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- User Profile Card -->
+            <div class="dashboard-card" id="userProfileCard">
+                <!-- Profile content inserted by JS -->
+            </div>
+            
+            <!-- Market Overview -->
+            <div class="dashboard-card">
+                <h3>📈 Visão Geral do Mercado</h3>
+                <div id="marketOverview" class="market-overview">
+                    <!-- Market stats here -->
+                </div>
+            </div>
+            
+            <!-- Fear & Greed Index -->
+            <div class="dashboard-card">
+                <h3>😨 Índice Fear & Greed</h3>
+                <div class="fear-greed-meter">
+                    <div class="meter-value">65</div>
+                    <div class="meter-label">Greed</div>
+                </div>
+            </div>
+            
+            <!-- Personalized Recommendations -->
+            <div class="dashboard-card">
+                <div id="personalizedRecommendations">
+                    <!-- Recommendations loaded by JS -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- News Section -->
+        <div id="newsContainer" class="news-container">
+            <!-- News loaded by JS -->
+        </div>
+        
+        <!-- Login Options (After profile result) -->
+        <div class="login-options-modal" id="loginOptions" style="display: none;">
+            <div class="login-modal-content">
+                <h3>💾 Salve seu perfil</h3>
+                <p>Mantenha acesso às suas recomendações personalizadas</p>
+                
+                <button class="btn-google disabled" title="Em desenvolvimento">
+                    <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
+                    Entrar com Google (Em breve)
+                </button>
+                
+                <div class="login-divider">
+                    <span>ou</span>
+                </div>
+                
+                <button class="btn-guest" onclick="continueAsGuest()">
+                    👤 Continuar como Visitante
+                </button>
+                
+                <div class="login-benefits">
+                    <h4>✨ Benefícios do cadastro:</h4>
+                    <ul>
+                        <li>📊 Histórico de análises</li>
+                        <li>🔔 Alertas personalizados</li>
+                        <li>📈 Acompanhamento de carteira</li>
+                        <li>📰 Feed de notícias personalizado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tooltips -->
     <div id="tooltip" class="tooltip-container hidden">
         <div class="tooltip-content" id="tooltip-content"></div>
@@ -634,6 +713,11 @@
     <script src="js/scenarios.js"></script>
     <script src="js/newsletter.js"></script>
     <script src="js/engagement-ui.js"></script>
+    
+    <!-- Market Dashboard Modules -->
+    <script src="js/market.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/news.js"></script>
     
     <!-- Main Application -->
     <script src="main.js"></script>

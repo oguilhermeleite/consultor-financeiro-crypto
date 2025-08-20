@@ -1117,6 +1117,11 @@ class CryptoAdvisor {
             });
         }, 300);
 
+        // Show login options after displaying results
+        setTimeout(() => {
+            this.showLoginOptions();
+        }, 3000);
+
         console.log('📊 Results displayed');
     }
 
@@ -1728,6 +1733,26 @@ ${allocationText}
         }
 
         console.log(`📄 Section switched to: ${sectionName}`);
+    }
+
+    showLoginOptions() {
+        // Store user profile for dashboard integration
+        if (this.userProfile) {
+            localStorage.setItem('userProfile', JSON.stringify({
+                type: this.userProfile.type,
+                name: this.formData.name || 'Investidor',
+                date: new Date().toISOString()
+            }));
+        }
+
+        // Show login modal
+        const loginModal = document.getElementById('loginOptions');
+        if (loginModal) {
+            loginModal.style.display = 'block';
+            console.log('🔑 Login options displayed');
+        } else {
+            console.warn('⚠️ Login modal not found');
+        }
     }
 
     saveData() {
