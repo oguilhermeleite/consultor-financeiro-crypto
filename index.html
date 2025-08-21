@@ -42,6 +42,7 @@
     
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/engagement.css">
+    <link rel="stylesheet" href="css/market.css">
     <link rel="manifest" href="manifest.json">
     <link rel="canonical" href="https://oguilhermeleite.github.io/consultor-financeiro-crypto/">
 </head>
@@ -758,6 +759,108 @@
         </div>
     </section>
 
+    <!-- Market Dashboard Section (NEW - Post Profile Completion) -->
+    <section id="dashboard" class="dashboard-section" style="display: none;">
+        <div class="dashboard-nav">
+            <h2>🎯 Parabéns! Perfil Descoberto</h2>
+            <p class="subtitle">Agora escolha como deseja continuar sua jornada de investimentos em cripto</p>
+            
+            <div class="dashboard-buttons">
+                <button id="enterAsGuest" class="btn-primary-market" aria-label="Entrar como visitante para ver dados do mercado">
+                    📊 Entrar como Visitante
+                </button>
+                <button id="signupGmail" class="btn-secondary-market" disabled aria-label="Cadastrar com Gmail - Em breve">
+                    📧 Cadastrar com Gmail <span class="coming-soon">(Em breve)</span>
+                </button>
+                <button id="backToProfile" class="btn-tertiary-market" aria-label="Voltar ao teste de perfil">
+                    🔄 Voltar ao Teste de Perfil
+                </button>
+            </div>
+        </div>
+
+        <!-- Market Data Section -->
+        <div id="marketSection" class="market-section" style="display: none;">
+            <!-- Market Header -->
+            <div class="market-header">
+                <h2 class="market-title">
+                    <span class="icon">📊</span>
+                    Mercado Agora
+                </h2>
+                <div class="market-status">
+                    <div class="status-indicator">
+                        <span class="status-dot" aria-label="Online"></span>
+                        <span>Dados em tempo real</span>
+                    </div>
+                    <button id="refreshMarket" class="refresh-button" aria-label="Atualizar dados do mercado">
+                        <span class="icon">🔄</span>
+                        Atualizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Market Overview Stats -->
+            <div class="market-overview">
+                <div class="overview-card">
+                    <div class="overview-label">Dominância Bitcoin</div>
+                    <div id="btcDominance" class="overview-value">--</div>
+                    <div class="overview-change">Participação no mercado</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">Market Cap Total</div>
+                    <div id="totalMarketCap" class="overview-value">--</div>
+                    <div class="overview-change">Valor total do mercado</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">Última Atualização</div>
+                    <div id="lastUpdate" class="overview-value">--</div>
+                    <div class="overview-change">Dados atualizados</div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="marketLoading" class="loading-container">
+                <div class="loading-spinner" aria-label="Carregando"></div>
+                <div class="loading-text">Carregando dados do mercado...</div>
+            </div>
+
+            <!-- Error State -->
+            <div id="marketError" class="error-container" style="display: none;">
+                <div class="error-icon" aria-label="Erro">⚠️</div>
+                <h3 class="error-title">Falha ao Carregar Dados</h3>
+                <p class="error-message">Não foi possível carregar os dados do mercado. Verifique sua conexão e tente novamente.</p>
+                <button class="error-retry" onclick="window.MarketDataAPI?.refreshMarketData()" aria-label="Tentar novamente">
+                    🔄 Tentar Novamente
+                </button>
+            </div>
+
+            <!-- Crypto Cards Grid -->
+            <div id="cryptoGrid" class="crypto-grid">
+                <!-- Cards will be dynamically generated for exactly 6 cryptocurrencies -->
+                <!-- Bitcoin Card Template -->
+                <div class="crypto-card skeleton" data-coin="bitcoin">
+                    <div class="crypto-header">
+                        <img class="crypto-logo skeleton-loader" alt="Bitcoin logo" />
+                        <div class="crypto-info">
+                            <h3><span class="skeleton-loader skeleton-price"></span></h3>
+                            <div class="crypto-symbol skeleton-loader skeleton-change"></div>
+                        </div>
+                    </div>
+                    <div class="crypto-price skeleton-loader skeleton-price"></div>
+                    <div class="crypto-change skeleton-loader skeleton-change"></div>
+                    <div class="crypto-stats skeleton-loader skeleton-stats"></div>
+                    <div class="crypto-chart skeleton-loader skeleton-chart"></div>
+                </div>
+
+                <!-- Additional cards will be generated dynamically -->
+            </div>
+
+            <!-- Auto-refresh countdown -->
+            <div class="refresh-countdown" style="text-align: center; margin-top: 30px; color: rgba(255,255,255,0.6);">
+                <small>Próxima atualização automática em: <span id="refreshCountdown">--</span></small>
+            </div>
+        </div>
+    </section>
+
     <!-- Tooltips -->
     <div id="tooltip" class="tooltip-container hidden">
         <div class="tooltip-content" id="tooltip-content"></div>
@@ -783,12 +886,17 @@
     
     <!-- Market Dashboard Modules -->
     <script src="js/market.js"></script>
+    <script src="js/market-data.js"></script>
+    <script src="js/market-dashboard.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/news.js"></script>
     <script src="js/testimonials.js"></script>
     
     <!-- Main Application -->
     <script src="main.js"></script>
+    
+    <!-- Market Dashboard Integration (AFTER main.js) -->
+    <script src="js/market-integration.js"></script>
     
     <!-- Enhanced Initialization -->
     <script>
