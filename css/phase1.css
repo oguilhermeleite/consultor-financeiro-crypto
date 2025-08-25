@@ -1,0 +1,394 @@
+/* Phase 1 - CTA Button + How It Works Section */
+/* CRITICAL: This file only ADDS new styles without modifying existing ones */
+
+/* ==================== CTA HERO SECTION ==================== */
+.cta-hero-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+  margin: 30px 0;
+  border-radius: 15px;
+}
+
+.cta-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.btn-discover-profile {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  border: none;
+  border-radius: 15px;
+  padding: 20px 40px;
+  min-width: 280px;
+  min-height: 70px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(255, 165, 0, 0.3);
+  transition: all 0.3s ease;
+  animation: softPulse 2s infinite;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-discover-profile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 165, 0, 0.4);
+  animation-play-state: paused;
+}
+
+.btn-discover-profile:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+}
+
+.cta-main-text {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cta-sub-text {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.cta-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+}
+
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.cta-benefits {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.benefit-item {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  padding: 5px 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* ==================== HOW IT WORKS SECTION ==================== */
+.how-it-works-section {
+  padding: 60px 20px;
+  background: #f8f9fa;
+  margin: 40px 0;
+}
+
+.how-it-works-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.how-it-works-section .section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #333;
+  position: relative;
+}
+
+.how-it-works-section .section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.step-item {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 250px;
+  flex: 1;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  position: relative;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.step-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #333;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(255, 165, 0, 0.3);
+}
+
+.step-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.step-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.step-description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.step-time {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.step-arrow {
+  font-size: 24px;
+  color: #FFD700;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.start-now-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-start-now {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-start-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-start-now:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .cta-hero-section {
+    padding: 30px 15px;
+    margin: 20px 0;
+  }
+  
+  .btn-discover-profile {
+    min-width: 260px;
+    padding: 18px 30px;
+    min-height: 65px;
+  }
+  
+  .cta-main-text {
+    font-size: 16px;
+  }
+  
+  .cta-sub-text {
+    font-size: 13px;
+  }
+  
+  .cta-benefits {
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .benefit-item {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+  
+  .how-it-works-section {
+    padding: 40px 15px;
+  }
+  
+  .how-it-works-section .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .steps-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .step-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .step-item {
+    min-width: 280px;
+    padding: 25px 20px;
+  }
+  
+  .step-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+  
+  .step-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .step-description {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .btn-start-now {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-hero-section {
+    padding: 25px 10px;
+  }
+  
+  .btn-discover-profile {
+    min-width: 240px;
+    padding: 15px 25px;
+    min-height: 60px;
+  }
+  
+  .cta-main-text {
+    font-size: 15px;
+  }
+  
+  .cta-sub-text {
+    font-size: 12px;
+  }
+  
+  .how-it-works-section .section-title {
+    font-size: 24px;
+  }
+  
+  .step-item {
+    min-width: 260px;
+    padding: 20px 15px;
+  }
+  
+  .step-title {
+    font-size: 16px;
+  }
+  
+  .step-description {
+    font-size: 13px;
+  }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+@media (prefers-reduced-motion: reduce) {
+  .btn-discover-profile {
+    animation: none;
+  }
+  
+  .step-item {
+    transition: none;
+  }
+  
+  .btn-start-now {
+    transition: none;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.btn-discover-profile:focus,
+.btn-start-now:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .step-item {
+    border: 2px solid #333;
+  }
+  
+  .cta-main-text,
+  .step-title {
+    color: #000;
+  }
+  
+  .cta-sub-text,
+  .step-description {
+    color: #333;
+  }
+}

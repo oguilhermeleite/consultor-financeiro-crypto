@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/engagement.css">
     <link rel="stylesheet" href="css/market.css">
+    <link rel="stylesheet" href="css/phase1.css">
     <link rel="manifest" href="manifest.json">
     <link rel="canonical" href="https://oguilhermeleite.github.io/consultor-financeiro-crypto/">
 </head>
@@ -74,6 +75,65 @@
                 <h1 class="hero-title">Consultor Financeiro</h1>
                 <p class="hero-subtitle">Descubra seu perfil de investidor em cripto e receba sua carteira personalizada</p>
                 
+                <!-- Phase 1: Primary CTA Button -->
+                <section class="cta-hero-section">
+                    <div class="cta-container">
+                        <button id="primaryCTA" class="btn-discover-profile">
+                            <span class="cta-main-text">DESCOBRIR MEU PERFIL AGORA</span>
+                            <span class="cta-sub-text">Análise gratuita em 2 minutos</span>
+                            <div class="cta-icon">🚀</div>
+                        </button>
+                        <div class="cta-benefits">
+                            <span class="benefit-item">✓ 100% Gratuito</span>
+                            <span class="benefit-item">✓ Resultado em 2 minutos</span>
+                            <span class="benefit-item">✓ Baseado em IA</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Phase 1: How It Works Section -->
+                <section class="how-it-works-section">
+                    <div class="container">
+                        <h2 class="section-title">Como Funciona</h2>
+                        <div class="steps-container">
+                            
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-icon">📝</div>
+                                <h3 class="step-title">TESTE</h3>
+                                <p class="step-description">Responda 15 perguntas sobre seus objetivos e tolerância ao risco</p>
+                                <span class="step-time">2 minutos</span>
+                            </div>
+
+                            <div class="step-arrow">→</div>
+
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-icon">🧠</div>
+                                <h3 class="step-title">ANÁLISE</h3>
+                                <p class="step-description">Nossa IA analisa suas respostas e descobre seu perfil de trader</p>
+                                <span class="step-time">Instantâneo</span>
+                            </div>
+
+                            <div class="step-arrow">→</div>
+
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-icon">💰</div>
+                                <h3 class="step-title">CARTEIRA</h3>
+                                <p class="step-description">Receba recomendações personalizadas de criptomoedas para seu perfil</p>
+                                <span class="step-time">Pronto!</span>
+                            </div>
+
+                        </div>
+                        
+                        <div class="start-now-container">
+                            <button id="secondaryCTA" class="btn-start-now">
+                                Começar Agora
+                            </button>
+                        </div>
+                    </div>
+                </section>
                 
                 <!-- Bitcoin Real-Time Chart Widget -->
                 <div class="bitcoin-widget">
@@ -1404,6 +1464,9 @@
         </a>
     </div>
 
+    
+    <!-- Phase 1 Functionality -->
+    <script src="js/phase1.js"></script>
     
     <!-- Bitcoin Real-Time Chart -->
     <script src="js/btc-chart.js"></script>
