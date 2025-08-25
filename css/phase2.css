@@ -1,0 +1,510 @@
+/* Phase 2 - Real-Time Crypto Prices + WhatsApp Integration */
+/* CRITICAL: This file only ADDS new styles without modifying existing ones */
+
+/* ==================== CRYPTO PRICE TICKER ==================== */
+.crypto-ticker-section {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+  padding: 12px 0;
+  border-bottom: 2px solid #FFD700;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.ticker-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.ticker-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFD700;
+  white-space: nowrap;
+  min-width: 120px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.ticker-scroll {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 5px 0;
+}
+
+.ticker-content {
+  display: flex;
+  gap: 30px;
+  animation: scroll-ticker 60s linear infinite;
+  white-space: nowrap;
+}
+
+.crypto-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 150px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.crypto-item:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.05);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.crypto-symbol {
+  font-weight: bold;
+  color: #FFD700;
+  font-size: 13px;
+  min-width: 45px;
+}
+
+.crypto-price {
+  font-size: 14px;
+  margin-right: 8px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.crypto-change {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.crypto-change.positive {
+  color: #00C851;
+  background: rgba(0, 200, 81, 0.2);
+  border: 1px solid rgba(0, 200, 81, 0.3);
+}
+
+.crypto-change.negative {
+  color: #FF4444;
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.loading-ticker {
+  color: #ccc;
+  font-style: italic;
+  padding: 8px 15px;
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+.ticker-refresh {
+  min-width: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.refresh-btn {
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid #FFD700;
+  color: #FFD700;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refresh-btn:hover {
+  background: #FFD700;
+  color: #1a1a2e;
+  transform: rotate(180deg);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.refresh-btn:active {
+  transform: rotate(360deg) scale(0.95);
+}
+
+@keyframes scroll-ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ==================== WHATSAPP FLOATING BUTTON ==================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+}
+
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.5s ease-out;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.whatsapp-btn:hover {
+  background: #128C7E;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+  text-decoration: none;
+  color: white;
+}
+
+.whatsapp-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.whatsapp-icon svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+.whatsapp-text {
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.whatsapp-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  animation: pulse-effect 2s infinite;
+  pointer-events: none;
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  background: #333;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  max-width: 200px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.whatsapp-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  border: 8px solid transparent;
+  border-top-color: #333;
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-5px);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-effect {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .crypto-ticker-section {
+    padding: 10px 0;
+  }
+  
+  .ticker-container {
+    padding: 0 10px;
+    gap: 10px;
+  }
+  
+  .ticker-title {
+    font-size: 12px;
+    min-width: 90px;
+  }
+  
+  .crypto-item {
+    min-width: 120px;
+    gap: 5px;
+    padding: 6px 8px;
+  }
+  
+  .crypto-symbol {
+    font-size: 12px;
+    min-width: 35px;
+  }
+  
+  .crypto-price {
+    font-size: 12px;
+  }
+  
+  .crypto-change {
+    font-size: 10px;
+    padding: 2px 6px;
+    min-width: 40px;
+  }
+  
+  .refresh-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  /* WhatsApp mobile adjustments */
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .whatsapp-btn {
+    padding: 12px 16px;
+  }
+  
+  .whatsapp-text {
+    display: none;
+  }
+  
+  .whatsapp-btn {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .whatsapp-icon {
+    margin-right: 0;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .whatsapp-tooltip {
+    right: -10px;
+    bottom: 75px;
+    font-size: 12px;
+    padding: 8px 12px;
+    max-width: 150px;
+  }
+  
+  .whatsapp-tooltip::after {
+    right: 15px;
+    border-width: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ticker-container {
+    padding: 0 5px;
+    gap: 8px;
+  }
+  
+  .ticker-title {
+    font-size: 11px;
+    min-width: 80px;
+  }
+  
+  .crypto-item {
+    min-width: 100px;
+    gap: 4px;
+    padding: 5px 6px;
+  }
+  
+  .crypto-symbol {
+    font-size: 11px;
+    min-width: 30px;
+  }
+  
+  .crypto-price {
+    font-size: 11px;
+  }
+  
+  .crypto-change {
+    font-size: 9px;
+    min-width: 35px;
+  }
+  
+  .whatsapp-btn {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-content {
+    animation: none;
+  }
+  
+  .whatsapp-pulse {
+    animation: none;
+  }
+  
+  .whatsapp-btn {
+    animation: none;
+  }
+  
+  .loading-ticker {
+    animation: none;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.refresh-btn:focus,
+.whatsapp-btn:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .crypto-ticker-section {
+    background: #000;
+    border-bottom-color: #fff;
+  }
+  
+  .ticker-title {
+    color: #fff;
+  }
+  
+  .crypto-item {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .crypto-symbol {
+    color: #fff;
+  }
+  
+  .refresh-btn {
+    border-color: #fff;
+    color: #fff;
+  }
+  
+  .whatsapp-tooltip {
+    background: #000;
+    border: 1px solid #fff;
+  }
+}
+
+/* Print styles */
+@media print {
+  .crypto-ticker-section,
+  .whatsapp-float {
+    display: none;
+  }
+}
+
+/* ==================== CUSTOM SCROLLBAR FOR TICKER (Webkit) ==================== */
+.ticker-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ticker-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==================== ERROR STATES ==================== */
+.ticker-error {
+  color: #FF6B6B;
+  font-style: italic;
+  text-align: center;
+  padding: 8px 15px;
+}
+
+.ticker-retry {
+  background: rgba(255, 107, 107, 0.2);
+  border: 1px solid #FF6B6B;
+  color: #FF6B6B;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.ticker-retry:hover {
+  background: #FF6B6B;
+  color: white;
+}
